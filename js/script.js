@@ -18,11 +18,11 @@ Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 function showPage(list, page) {
-   let startIndex = (page * 9) - list.length;
-   let endIndex = page * list.length;
+   let startIndex = (page * 9) - 9;
+   let endIndex = page * 9;
    let studentList = document.querySelector('.student-list');
    studentList.innerHTML = '';
-   for (let i = page * 9; i <= list.length; i++) {
+   for (let i = 0; i <= list.length; i++) {
       if (i >= startIndex && i < endIndex) {
          let listItem = document.createElement('li');
          listItem.className = 'student-item cf';
@@ -30,7 +30,7 @@ function showPage(list, page) {
          divContainer.className = 'student-details';
          let image = document.createElement('img');
          image.className = 'avatar';
-         image.src = 'https://randomuser.me/api/portraits/women/25.jpg';
+         image.src = `https://randomuser.me/api/portraits/women/${i}.jpg`;
          image.alt = 'Profile Picture';
          let header = document.createElement('h3');
          header.innerHTML = `${list[i].name.first} ${list[i].name.last}`;
@@ -60,14 +60,16 @@ Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
 function addPagination(list) {
-   let paginationButtonsNeeded = list.length;
+   console.log(list.length);
+   let paginationButtonsNeeded = Math.round(list.length / 9);
+   console.log(paginationButtonsNeeded);
    let unorderedList = document.querySelector('.link-list');
    unorderedList.innerHTML = '';
-   for (let i = 1; i <= paginationButtonsNeeded; i++) {
+   for (let i = 0; i < paginationButtonsNeeded; i++) {
       let listItem = document.createElement('li');
       let paginationButton = document.createElement('button');
       paginationButton.type = 'button';
-      paginationButton.innerHTML = i;
+      paginationButton.innerHTML = i + 1;
       listItem.appendChild(paginationButton);
       unorderedList.appendChild(listItem);
    }
