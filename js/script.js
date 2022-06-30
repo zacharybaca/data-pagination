@@ -18,11 +18,11 @@ Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 function showPage(list, page) {
-   let startIndex = (page * list.length) - list.length;
+   let startIndex = (page * 9) - list.length;
    let endIndex = page * list.length;
    let studentList = document.querySelector('.student-list');
    studentList.innerHTML = '';
-   for (let i = 0; i <= list.length; i++) {
+   for (let i = page * 9; i <= list.length; i++) {
       if (i >= startIndex && i < endIndex) {
          let listItem = document.createElement('li');
          listItem.className = 'student-item cf';
@@ -59,8 +59,32 @@ function showPage(list, page) {
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
-
+function addPagination(list) {
+   let paginationButtonsNeeded = list.length;
+   let unorderedList = document.querySelector('.link-list');
+   unorderedList.innerHTML = '';
+   for (let i = 1; i <= paginationButtonsNeeded; i++) {
+      let listItem = document.createElement('li');
+      let paginationButton = document.createElement('button');
+      paginationButton.type = 'button';
+      paginationButton.innerHTML = i;
+      listItem.appendChild(paginationButton);
+      unorderedList.appendChild(listItem);
+   }
+   let activeButton = document.querySelector('.link-list li button');
+   activeButton.className = 'active';
+   unorderedList.addEventListener('click', (e) => {
+      if (e.target.matches('button')) {
+         activeButton.className = '';
+         let page = e.target.innerHTML;
+         console.log(page);
+         page.className = 'active';
+         showPage(list, page);
+      }
+   })
+}
 
 
 // Call functions
 showPage(data, 1);
+addPagination(data);
