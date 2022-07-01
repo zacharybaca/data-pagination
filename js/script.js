@@ -15,7 +15,7 @@ For assistance:
 
 /*
 Create the `showPage` function
-This function will create and insert/append the elements needed to display a "page" of nine students
+The showPage function will take in a list(array) of people objects and a page parameter where it will show 9 people per page dynamically
 */
 function showPage(list, page) {
    let startIndex = (page * 9) - 9;
@@ -57,7 +57,7 @@ function showPage(list, page) {
 
 /*
 Create the `addPagination` function
-This function will create and insert/append the elements needed for the pagination buttons
+The addPagination function will add buttons to the bottom of the page according to how many people are in the list. The showPage function is also utilized in this function.
 */
 function addPagination(list) {
    console.log(list.length);
