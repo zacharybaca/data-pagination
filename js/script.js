@@ -75,15 +75,17 @@ function addPagination(list) {
    }
    let activeButton = document.querySelector('.link-list li button');
    activeButton.className = 'active';
-   let activeElement = document.querySelector(".active");
    unorderedList.addEventListener('click', (e) => {
+      let activeElement = document.querySelector(".active");
+      activeElement.classList.remove("active");
       activeButton.classList.remove("active");
       if (e.target.matches('button') && activeElement) {
          e.target.className = "active";
          let page = e.target.innerHTML;
          showPage(list, page);
-         activeElement.classList.remove("active"); 
+          
       }
+      
    })
    
 }
