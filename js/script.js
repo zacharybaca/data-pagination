@@ -60,9 +60,7 @@ Create the `addPagination` function
 The addPagination function will add buttons to the bottom of the page according to how many people are in the list. The showPage function is also utilized in this function.
 */
 function addPagination(list) {
-   console.log(list.length);
    let paginationButtonsNeeded = Math.round(list.length / 9);
-   console.log(paginationButtonsNeeded);
    let unorderedList = document.querySelector('.link-list');
    unorderedList.innerHTML = '';
    for (let i = 0; i < paginationButtonsNeeded; i++) {
