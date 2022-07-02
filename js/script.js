@@ -75,9 +75,9 @@ function addPagination(list) {
    activeButton.className = 'active';
    unorderedList.addEventListener('click', (e) => {
       let activeElement = document.querySelector(".active");
-      activeElement.classList.remove("active");
-      activeButton.classList.remove("active");
       if (e.target.matches('button') && activeElement) {
+         activeButton.classList.remove("active");
+         activeElement.classList.remove("active");
          e.target.className = "active";
          let page = e.target.innerHTML;
          showPage(list, page);
