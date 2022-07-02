@@ -22,7 +22,7 @@ function showPage(list, page) {
    let endIndex = page * 9;
    let studentList = document.querySelector('.student-list');
    studentList.innerHTML = '';
-   for (let i = 0; i <= list.length; i++) {
+   for (let i = 0; i < list.length; i++) {
       if (i >= startIndex && i < endIndex) {
          let listItem = document.createElement('li');
          listItem.className = 'student-item cf';
